@@ -270,7 +270,7 @@
 (defun rspec-run-single-file (spec-file &rest opts)
   "Runs spec with the specified options"
   (rspec-register-verify-redo (cons 'rspec-run-single-file (cons spec-file opts)))
-  (compile (concat "rake spec SPEC=\'" spec-file "\' SPEC_OPTS=\'" (mapconcat (lambda (x) x) opts " ") "\'"))
+  (compile (concat "spec -fs -R " spec-file))
   (end-of-buffer-other-window 0))
 
 (defun rspec-project-root (&optional directory)
