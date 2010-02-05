@@ -264,12 +264,14 @@
 (defun rspec-run (&rest opts)
   "Runs spec with the specified options"
   (rspec-register-verify-redo (cons 'rspec-run opts))
+	(save-some-buffers 1)
   (compile (concat "rake spec SPEC_OPTS=\'" (mapconcat (lambda (x) x) opts " ") "\'"))
   (end-of-buffer-other-window 0))
 
 (defun rspec-run-single-file (spec-file &rest opts)
   "Runs spec with the specified options"
   (rspec-register-verify-redo (cons 'rspec-run-single-file (cons spec-file opts)))
+	(save-some-buffers 1)
   (compile (concat "spec " (mapconcat (lambda (x) x) opts " ") " " spec-file))
   (end-of-buffer-other-window 0))
 
