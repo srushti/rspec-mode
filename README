@@ -1,0 +1,1 @@
+Fork of rspec-mode with only one change, single file spec runs spec directly and not 'rake spec'
